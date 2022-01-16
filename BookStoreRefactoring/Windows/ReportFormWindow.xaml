@@ -1,0 +1,48 @@
+﻿<Window x:Class="BookStoreRefactoring.Windows.ReportFormWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BookStoreRefactoring.Windows"
+        mc:Ignorable="d"
+        Title="ReportFormWindow" Height="450" Width="800"
+        DataContext="{Binding Source={StaticResource Locator},Path=ReportFormViewModel}"
+        IsEnabled="{Binding IsEnabled}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <TextBlock  Text="Report Generator" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="18"/>
+        <TextBlock x:Name="tblGGG"  Text="Generate a report using the following categories:" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="12" Margin="0,30,0,0"/>
+        <Button x:Name="btnSearch" Content="Search"  Height="30" Width="70" Grid.Row="4" Grid.ColumnSpan="2" Command="{Binding SearchCommand}"/>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <TextBlock Text="Item Type-  " Height="30" />
+            <ComboBox Name="cmbType"  Height="30" Width="100" SelectedItem="{Binding ProductType,Mode=OneWayToSource}">
+                <ComboBoxItem Content="Book"/>
+                <ComboBoxItem Content="Journal"/>
+            </ComboBox>
+            <TextBlock Text="        Genre-  " Height="30"/>
+            <ComboBox Name="cmbGenre" Height="30" Width="150" SelectedItem="{Binding SelectedGenre,Mode=OneWayToSource}" ItemsSource="{Binding GenreItems}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <TextBlock Text="Price From-  " Height="30" />
+            <TextBox Name="cmbPriceL" Height="30" Width="100" Text="{Binding PriceFrom,Mode=OneWayToSource}"/>
+            <TextBlock Text="        To-  " Height="30"/>
+            <TextBox Name="cmbPriceH" Height="30" Width="100" Text="{Binding PriceTo,Mode=OneWayToSource}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <TextBlock Text="Release From-  " Height="30"/>
+            <DatePicker VerticalAlignment="Center" SelectedDate="{Binding DateFrom,Mode=OneWayToSource}"/>
+            <TextBlock Text="        To-  " Height="30"/>
+            <DatePicker VerticalAlignment="Center" SelectedDate="{Binding DateTo,Mode=OneWayToSource}"/>
+        </StackPanel>
+    </Grid>
+</Window>

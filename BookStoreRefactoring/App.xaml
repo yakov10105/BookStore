@@ -1,0 +1,14 @@
+﻿<Application x:Class="BookStoreRefactoring.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:BookStoreRefactoring"
+             Startup="OnStartup">
+    <Application.Resources>
+        <ResourceDictionary>
+            <vm:ViewModelLocator
+                xmlns:vm="clr-namespace:BookStoreRefactoring"
+                x:Key="Locator"/>
+        </ResourceDictionary>
+    </Application.Resources>
+    
+</Application>
